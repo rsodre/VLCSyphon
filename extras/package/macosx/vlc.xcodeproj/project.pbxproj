@@ -865,6 +865,9 @@
 		CCDB535D13E97D3500A1782F /* dropzone-background.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB535C13E97D3500A1782F /* dropzone-background.png */; };
 		CCE8BAC4160615D9006741FB /* effects-one-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8BAC2160615D9006741FB /* effects-one-button-pressed.png */; };
 		CCE8BAC5160615D9006741FB /* effects-one-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8BAC3160615D9006741FB /* effects-one-button-pressed@2x.png */; };
+		DB0D2C871D5507C000D2FDBC /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0D2C861D5507C000D2FDBC /* Syphon.framework */; };
+		DB5FFC921D55180F00746F38 /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = DB5FFC911D55180F00746F38 /* Makefile.am */; };
+		DB5FFC941D551BC200746F38 /* configure.ac in Resources */ = {isa = PBXBuildFile; fileRef = DB5FFC931D551BC200746F38 /* configure.ac */; };
 		DCC8017A16FCA0DA007FE736 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCC8017916FCA0DA007FE736 /* AVFoundation.framework */; };
 		E0FB95CE1615B6DF0005069A /* DetachedVideoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FB95CC1615B6DF0005069A /* DetachedVideoWindow.xib */; };
 /* End PBXBuildFile section */
@@ -1776,6 +1779,11 @@
 		CCF0777A13659A8000AF19FD /* SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPInvocationGrabbing.m; path = ../../../modules/gui/macosx/SPInvocationGrabbing.m; sourceTree = SOURCE_ROOT; };
 		CCF0777B13659A8000AF19FD /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPMediaKeyTap.h; path = ../../../modules/gui/macosx/SPMediaKeyTap.h; sourceTree = SOURCE_ROOT; };
 		CCF0777C13659A8000AF19FD /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPMediaKeyTap.m; path = ../../../modules/gui/macosx/SPMediaKeyTap.m; sourceTree = SOURCE_ROOT; };
+		DB0D2C861D5507C000D2FDBC /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = "../../../contrib/contrib-osx/Syphon.framework"; sourceTree = "<group>"; };
+		DB0D2C8C1D55138800D2FDBC /* syphonServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = syphonServer.h; path = ../../../modules/video_output/syphonServer.h; sourceTree = "<group>"; };
+		DB0D2C8D1D55138800D2FDBC /* syphonServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = syphonServer.m; path = ../../../modules/video_output/syphonServer.m; sourceTree = "<group>"; };
+		DB5FFC911D55180F00746F38 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../../../modules/video_output/Makefile.am; sourceTree = "<group>"; };
+		DB5FFC931D551BC200746F38 /* configure.ac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = configure.ac; path = ../../../configure.ac; sourceTree = "<group>"; };
 		DC1A176914E2778A001477C6 /* qtsound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = qtsound.m; path = ../../../modules/access/qtsound.m; sourceTree = "<group>"; };
 		DCC8017816FCA036007FE736 /* avcapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = avcapture.m; path = ../../../modules/access/avcapture.m; sourceTree = "<group>"; };
 		DCC8017916FCA0DA007FE736 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1806,6 +1814,7 @@
 				DCC8017A16FCA0DA007FE736 /* AVFoundation.framework in Frameworks */,
 				CC402F410E00ABBB006A4BA4 /* Cocoa.framework in Frameworks */,
 				CC402F420E00ABBB006A4BA4 /* ApplicationServices.framework in Frameworks */,
+				DB0D2C871D5507C000D2FDBC /* Syphon.framework in Frameworks */,
 				CC402F430E00ABBB006A4BA4 /* QTKit.framework in Frameworks */,
 				CC402F440E00ABBB006A4BA4 /* WebKit.framework in Frameworks */,
 				CCBE999F0F922C51000705F8 /* CoreServices.framework in Frameworks */,
@@ -1965,6 +1974,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB0D2C861D5507C000D2FDBC /* Syphon.framework */,
 				CC3F9F851350B2A000B0E885 /* Growl.framework */,
 				CC84FB2C130083BB00816D38 /* BGHUDAppKit.framework */,
 				CC426FD01020D44F00A32659 /* Sparkle.framework */,
@@ -2816,6 +2826,7 @@
 		CC6C01A40DDF3E7800C7D754 /* Minimal Mac OS X Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DB0D2C881D55137200D2FDBC /* syphon */,
 				CC6C01A90DDF3E9200C7D754 /* intf.h */,
 				CC6C01AA0DDF3E9200C7D754 /* intf.m */,
 				CC6C01AB0DDF3E9200C7D754 /* macosx.c */,
@@ -2970,6 +2981,17 @@
 				CC9E5D6F15975E2600D14E83 /* sidebar-podcast@2x.png */,
 			);
 			name = "sidebar-icons";
+			sourceTree = "<group>";
+		};
+		DB0D2C881D55137200D2FDBC /* syphon */ = {
+			isa = PBXGroup;
+			children = (
+				DB5FFC931D551BC200746F38 /* configure.ac */,
+				DB5FFC911D55180F00746F38 /* Makefile.am */,
+				DB0D2C8C1D55138800D2FDBC /* syphonServer.h */,
+				DB0D2C8D1D55138800D2FDBC /* syphonServer.m */,
+			);
+			name = syphon;
 			sourceTree = "<group>";
 		};
 		DCF358BC077F1236007DB450 /* xibs */ = {
@@ -3265,6 +3287,7 @@
 				CC04332013B28B2900D7D52E /* fs_stop.png in Resources */,
 				CC04332113B28B2900D7D52E /* fs_time_slider_knob_highlight.png in Resources */,
 				CC04332213B28B2900D7D52E /* fs_time_slider_knob.png in Resources */,
+				DB5FFC921D55180F00746F38 /* Makefile.am in Resources */,
 				1C88BC0919DC7C8100645190 /* ys-fullscreen-one-button_dark.png in Resources */,
 				CC04332313B28B2900D7D52E /* fs_time_slider.png in Resources */,
 				1C51BDE51B7A221B0056B9AA /* TimeSelectionPanel.xib in Resources */,
@@ -3641,6 +3664,7 @@
 				CC9E5DEF159760B100D14E83 /* pause-pressed@2x.png in Resources */,
 				1C88BC0319DC7C8100645190 /* ys-fullscreen-double-buttons-pressed_dark.png in Resources */,
 				CC9E5DF0159760B100D14E83 /* pause@2x.png in Resources */,
+				DB5FFC941D551BC200746F38 /* configure.ac in Resources */,
 				CC9E5DF1159760B100D14E83 /* play-pressed@2x.png in Resources */,
 				1C88BCBC19DC7CB300645190 /* ys-fs_volume_mute_highlight.png in Resources */,
 				CC9E5DF2159760B100D14E83 /* play@2x.png in Resources */,
@@ -4923,6 +4947,10 @@
 		C2F2A6EB09588F1B00018C74 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";
@@ -4934,6 +4962,10 @@
 		C2F2A6EC09588F1B00018C74 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";
@@ -4945,6 +4977,10 @@
 		C2F2A6ED09588F1B00018C74 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";

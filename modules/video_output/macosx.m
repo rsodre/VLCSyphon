@@ -51,6 +51,9 @@
 
 #define OSX_EL_CAPITAN (NSAppKitVersionNumber >= 1404)
 
+// ROGER  -- SYPHON
+#include "syphonServer.h"
+
 /**
  * Forward declarations
  */
@@ -278,7 +281,10 @@ static int Open (vlc_object_t *this)
         
         /* */
         vout_display_SendEventDisplaySize (vd, vd->fmt.i_visible_width, vd->fmt.i_visible_height);
-        
+		
+		// ROGER -- SYPHON
+		syphon_open(false);
+		
         return VLC_SUCCESS;
         
     error:
@@ -324,6 +330,9 @@ void Close (vlc_object_t *this)
         if (sys->embed)
             vout_display_DeleteWindow (vd, sys->embed);
         free (sys);
+		
+		// ROGER -- SYPHON
+		syphon_close();
     }
 }
 
@@ -353,7 +362,8 @@ static void PictureDisplay (vout_display_t *vd, picture_t *pic, subpicture_t *su
 {
     vout_display_sys_t *sys = vd->sys;
     [sys->glView setVoutFlushing:YES];
-    vout_display_opengl_Display (sys->vgl, &vd->source);
+	vout_display_opengl_Display (sys->vgl, &vd->source);
+	syphon_display_opengl_Display (sys->vgl, &vd->source);
     [sys->glView setVoutFlushing:NO];
     picture_Release (pic);
     sys->has_first_frame = true;

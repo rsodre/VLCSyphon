@@ -11,9 +11,10 @@ vout_LTLIBRARIES += libdecklinkoutput_plugin.la
 endif
 
 if HAVE_OSX
-libvout_macosx_plugin_la_SOURCES = video_output/macosx.m video_output/opengl.c video_output/opengl.h
-libvout_macosx_plugin_la_CFLAGS = $(AM_CFLAGS)
-libvout_macosx_plugin_la_LDFLAGS = $(AM_LDFLAGS) -rpath '$(voutdir)' -Wl,-framework,OpenGL,-framework,Cocoa
+libvout_macosx_plugin_la_SOURCES = video_output/macosx.m video_output/opengl.c video_output/opengl.h video_output/syphonServer.m
+libvout_macosx_plugin_la_CFLAGS = $(AM_CFLAGS) -F$(CONTRIB_DIR)
+libvout_macosx_plugin_la_OBJCFLAGS = $(AM_CFLAGS) -F$(CONTRIB_DIR)
+libvout_macosx_plugin_la_LDFLAGS = $(AM_LDFLAGS) -rpath '$(voutdir)' -Wl,-framework,OpenGL,-framework,Cocoa,-framework,Syphon
 
 libcaopengllayer_plugin_la_SOURCES = video_output/caopengllayer.m video_output/opengl.c video_output/opengl.h
 libcaopengllayer_plugin_la_CFLAGS = $(AM_CFLAGS)
