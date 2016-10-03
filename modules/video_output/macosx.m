@@ -77,7 +77,7 @@ static void OpenglSwap (vlc_gl_t *gl);
 vlc_module_begin ()
     /* Will be loaded even without interface module. see voutgl.m */
     set_shortname ("Mac OS X")
-    set_description (N_("Mac OS X OpenGL video output"))
+    set_description (N_("Mac OS X OpenGL video output (Syphon)"))
     set_category (CAT_VIDEO)
     set_subcategory (SUBCAT_VIDEO_VOUT)
     set_capability ("vout display", 300)
@@ -283,7 +283,8 @@ static int Open (vlc_object_t *this)
         vout_display_SendEventDisplaySize (vd, vd->fmt.i_visible_width, vd->fmt.i_visible_height);
 		
 		// ROGER -- SYPHON
-		syphon_open(false);
+		syphon_log_to_file();
+		SyphonLog(@"Open!");
 		
         return VLC_SUCCESS;
         
@@ -333,6 +334,7 @@ void Close (vlc_object_t *this)
 		
 		// ROGER -- SYPHON
 		syphon_close();
+		SyphonLog(@"Closed!");
     }
 }
 
@@ -363,9 +365,13 @@ static void PictureDisplay (vout_display_t *vd, picture_t *pic, subpicture_t *su
     vout_display_sys_t *sys = vd->sys;
     [sys->glView setVoutFlushing:YES];
 	vout_display_opengl_Display (sys->vgl, &vd->source);
-	syphon_display_opengl_Display (sys->vgl, &vd->source);
-    [sys->glView setVoutFlushing:NO];
-    picture_Release (pic);
+	[sys->glView setVoutFlushing:NO];
+
+	// ROGER -- SYPHON
+	//vlc_syphon_publish (sys->vgl, &vd->source);
+	syphon_display_opengl_Display(sys->vgl, &vd->source);
+	
+	picture_Release (pic);
     sys->has_first_frame = true;
 
     if (subpicture)

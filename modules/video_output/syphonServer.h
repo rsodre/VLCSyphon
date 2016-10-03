@@ -30,10 +30,20 @@
 
 #pragma once
 
-void syphon_open( bool privateServer );
+#ifdef __OBJC__
+void syphon_open( CGLContextObj context );
+#endif
 void syphon_close();
 bool syphon_enabled();
 void syphon_publish( GLuint target, GLuint texID, int width, int height, bool flipped );
+void syphon_publish_area( GLuint target, GLuint texID, int width, int height, int x, int y, int w, int h, bool flipped );
 
-void syphon_display_opengl_Display(vout_display_opengl_t *vgl, const video_format_t *source);
+void vlc_syphon_open(vout_display_sys_t *sys);
+void vlc_syphon_publish(vout_display_opengl_t *vgl, const video_format_t *source);
 
+void syphon_log_to_file();
+void SyphonLog(NSString *format, ...);
+
+
+// NEW
+int syphon_display_opengl_Display(vout_display_opengl_t *vgl, const video_format_t *source);

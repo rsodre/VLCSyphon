@@ -202,6 +202,8 @@ struct vout_display_opengl_t {
     int      texture_temp_buf_size;
 };
 
+#ifndef SYPHON_SERVER
+
 static inline int GetAlignedSize(unsigned size)
 {
     /* Return the smallest larger or equal power of 2 */
@@ -302,6 +304,7 @@ static void BuildYUVFragmentShader(vout_display_opengl_t *vgl,
         " result = x * Coefficient[0] + Coefficient[3];"
         " result = (y * Coefficient[1]) + result;"
         " result = (z * Coefficient[2]) + result;"
+		" result.a = 1.;"	// ROGER -- SYPHON
         " gl_FragColor = result;"
         "}";
     bool swap_uv = fmt->i_chroma == VLC_CODEC_YV12 ||
@@ -1410,3 +1413,4 @@ int vout_display_opengl_Display(vout_display_opengl_t *vgl,
     return VLC_SUCCESS;
 }
 
+#endif	// SYPHON_SERVER
