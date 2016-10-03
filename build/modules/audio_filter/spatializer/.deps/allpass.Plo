@@ -1,0 +1,14 @@
+audio_filter/spatializer/allpass.lo: \
+  /Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../modules/audio_filter/spatializer/allpass.cpp \
+  /Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../modules/audio_filter/spatializer/allpass.hpp \
+  /Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../modules/audio_filter/spatializer/denormals.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/stddef.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/__stddef_max_align_t.h
+
+/Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../modules/audio_filter/spatializer/allpass.hpp:
+
+/Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../modules/audio_filter/spatializer/denormals.h:
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/stddef.h:
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.0.0/include/__stddef_max_align_t.h:

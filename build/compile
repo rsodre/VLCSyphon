@@ -1,0 +1,8 @@
+#! /bin/sh
+rm -f .error$$
+ERROR=0
+export PATH="/Users/Roger/Dev/XCode/vlc/extras/tools/build/bin:/Users/Roger/Dev/XCode/vlc/contrib/x86_64-apple-darwin11/bin:/Users/Roger/Dev/XCode/vlc/extras/tools/build/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/Users/Roger/Dev/XCode/vlc/contrib/x86_64-apple-darwin11/bin:/Users/Roger/Dev/XCode/vlc/contrib/x86_64-apple-darwin11/bin:/Users/Roger/anaconda/bin:/opt/local/bin:/opt/local/sbin:/Volumes/HDD/JOBS/SpaceInch/_SOURCE/cocos2d-x/tools/cocos2d-console/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/pgsql/bin:/Library/Frameworks/GDAL.framework/Programs:/Library/Frameworks/SQLite3.framework/Programs:/Library/Frameworks/GEOS.framework/Programs:/Library/Frameworks/PROJ.framework/Programs:/Library/Frameworks/UnixImageIO.framework/Programs:/opt/local/bin:/opt/local/sbin:/Users/Roger/Dev/Android/android-sdk_r24.3.3/tools:/Users/Roger/Dev/Android/android-sdk_r24.3.3/platform-tools/:/Users/Roger/Dev/Android/android-ndk-r9d:/Users/Roger/.apportable/SDK/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin" LANG=C
+(make V=1 $@ 2>&1 || touch .error$$)| /Users/Roger/Dev/XCode/vlc/extras/package/macosx/../../../extras/buildsystem/make.pl
+test -f .error$$ && ERROR=1
+rm -f .error$$
+exit $ERROR

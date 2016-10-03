@@ -1,0 +1,9 @@
+cp -R ../modules/video_output/Syphon.framework ../contrib/x86_64-apple-darwin11/
+rm modules/video_output/libvout_macosx_plugin_la*.lo
+rm -rf VLC.app
+make
+install_name_tool -change @loader_path/../Frameworks/Syphon.framework/Versions/A/Syphon @executable_path/../Frameworks/Syphon.framework/Versions/A/Syphon ../build/VLC.app/Contents/MacOS/plugins/libvout_macosx_plugin.dylib
+cp -R ../modules/video_output/Syphon.framework ../build/VLC.app/Contents/Frameworks/
+ls -l ../build/VLC.app/Contents/Frameworks/
+touch ../build/VLC.app
+mv ../build/VLC.app ../build/VLCSyphon.app
