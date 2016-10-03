@@ -44,7 +44,7 @@
 //
 // LOG
 //
-//#define SYPHON_LOG
+#define SYPHON_LOG
 
 void syphon_log_to_file()
 {
@@ -67,7 +67,7 @@ void SyphonLog(NSString *format, ...)
 	if (![format hasSuffix: @"\n"])
 		format = [format stringByAppendingString: @"\n"];
 	NSString *body = [[NSString alloc] initWithFormat:format arguments:ap];
-	NSLog(body);
+	NSLog(@"%@",body);
 	va_end (ap);
 #endif
 }
@@ -164,194 +164,6 @@ void syphon_publish_area( GLuint target, GLuint texID, int width, int height, in
 // FROM opengl.c
 //
 
-static const GLfloat identity[] = {
-	1.0f, 0.0f, 0.0f, 0.0f,
-	0.0f, 1.0f, 0.0f, 0.0f,
-	0.0f, 0.0f, 1.0f, 0.0f,
-	0.0f, 0.0f, 0.0f, 1.0f
-};
-
-#ifdef SUPPORTS_FIXED_PIPELINE
-static void syphon_DrawWithoutShaders(vout_display_opengl_t *vgl,
-							   float *left, float *top, float *right, float *bottom)
-{
-	static const GLfloat vertexCoord[] = {
-		-1.0f, -1.0f,
-		1.0f, -1.0f,
-		-1.0f,  1.0f,
-		1.0f,  1.0f,
-	};
-	
-	const GLfloat textureCoord[] = {
-		left[0],  bottom[0],
-		right[0], bottom[0],
-		left[0],  top[0],
-		right[0], top[0]
-	};
-	
-	GLfloat transformMatrix[16];
-	orientationTransformMatrix(transformMatrix, vgl->fmt.orientation);
-	
-	glPushMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(transformMatrix);
-	
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	glEnable(vgl->tex_target);
-	glActiveTexture(GL_TEXTURE0 + 0);
-	glClientActiveTexture(GL_TEXTURE0 + 0);
-	
-	glBindTexture(vgl->tex_target, vgl->texture[0][0]);
-	
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-	
-	glTexCoordPointer(2, GL_FLOAT, 0, textureCoord);
-	glVertexPointer(2, GL_FLOAT, 0, vertexCoord);
-	
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisable(vgl->tex_target);
-	
-	glPopMatrix();
-	
-}
-#endif
-
-
-static int syphon_BuildRectangle(unsigned nbPlanes,
-						  GLfloat **vertexCoord, GLfloat **textureCoord, unsigned *nbVertices,
-						  GLushort **indices, unsigned *nbIndices,
-						  float *left, float *top, float *right, float *bottom)
-{
-	*nbVertices = 4;
-	*nbIndices = 6;
-	
-	*vertexCoord = malloc(*nbVertices * 3 * sizeof(GLfloat));
-	if (*vertexCoord == NULL)
-		return VLC_ENOMEM;
-	*textureCoord = malloc(nbPlanes * *nbVertices * 2 * sizeof(GLfloat));
-	if (*textureCoord == NULL)
-	{
-		free(*vertexCoord);
-		return VLC_ENOMEM;
-	}
-	*indices = malloc(*nbIndices * sizeof(GLushort));
-	if (*indices == NULL)
-	{
-		free(*textureCoord);
-		free(*vertexCoord);
-		return VLC_ENOMEM;
-	}
-	
-	static const GLfloat coord[] = {
-		-1.0,    1.0,    -1.0f,
-		-1.0,    -1.0,   -1.0f,
-		1.0,     1.0,    -1.0f,
-		1.0,     -1.0,   -1.0f
-	};
-	
-	memcpy(*vertexCoord, coord, *nbVertices * 3 * sizeof(GLfloat));
-	
-	for (unsigned p = 0; p < nbPlanes; ++p)
-	{
-		const GLfloat tex[] = {
-			left[p],  top[p],
-			left[p],  bottom[p],
-			right[p], top[p],
-			right[p], bottom[p]
-		};
-		
-		memcpy(*textureCoord + p * *nbVertices * 2, tex,
-			   *nbVertices * 2 * sizeof(GLfloat));
-	}
-	
-	const GLushort ind[] = {
-		0, 1, 2,
-		2, 1, 3
-	};
-	
-	memcpy(*indices, ind, *nbIndices * sizeof(GLushort));
-	
-	return VLC_SUCCESS;
-}
-
-
-#ifdef SUPPORTS_SHADERS
-static void syphon_DrawWithShaders(vout_display_opengl_t *vgl,
-							float *left, float *top, float *right, float *bottom,
-							int program)
-{
-	vgl->UseProgram(vgl->program[program]);
-	if (program == 0) {
-		if (vgl->chroma->plane_count == 3) {
-			vgl->Uniform4fv(vgl->GetUniformLocation(vgl->program[0], "Coefficient"), 4, vgl->local_value);
-			vgl->Uniform1i(vgl->GetUniformLocation(vgl->program[0], "Texture0"), 0);
-			vgl->Uniform1i(vgl->GetUniformLocation(vgl->program[0], "Texture1"), 1);
-			vgl->Uniform1i(vgl->GetUniformLocation(vgl->program[0], "Texture2"), 2);
-		}
-		else if (vgl->chroma->plane_count == 1) {
-			vgl->Uniform1i(vgl->GetUniformLocation(vgl->program[0], "Texture0"), 0);
-		}
-	} else {
-		vgl->Uniform1i(vgl->GetUniformLocation(vgl->program[1], "Texture0"), 0);
-		vgl->Uniform4f(vgl->GetUniformLocation(vgl->program[1], "FillColor"), 1.0f, 1.0f, 1.0f, 1.0f);
-	}
-	
-	GLfloat *vertexCoord, *textureCoord;
-	GLushort *indices;
-	unsigned nbVertices, nbIndices;
-	
-	int i_ret = syphon_BuildRectangle(vgl->chroma->plane_count,
-							   &vertexCoord, &textureCoord, &nbVertices,
-							   &indices, &nbIndices,
-							   left, top, right, bottom);
-	
-	if (i_ret != VLC_SUCCESS)
-		return;
-	
-	GLfloat projectionMatrix[16], viewMatrix[16],
-	yRotMatrix[16], xRotMatrix[16],
-	zoomMatrix[16], orientationMatrix[16];
-	
-	orientationTransformMatrix(orientationMatrix, vgl->fmt.orientation);
-	
-	for (unsigned j = 0; j < vgl->chroma->plane_count; j++) {
-		glActiveTexture(GL_TEXTURE0+j);
-		glClientActiveTexture(GL_TEXTURE0+j);
-		glBindTexture(vgl->tex_target, vgl->texture[0][j]);
-		
-		vgl->BindBuffer(GL_ARRAY_BUFFER, vgl->texture_buffer_object[j]);
-		vgl->BufferData(GL_ARRAY_BUFFER, nbVertices * 2 * sizeof(GLfloat),
-						textureCoord + j * nbVertices * 2, GL_STATIC_DRAW);
-		
-		char attribute[20];
-		snprintf(attribute, sizeof(attribute), "MultiTexCoord%1d", j);
-		vgl->EnableVertexAttribArray(vgl->GetAttribLocation(vgl->program[program], attribute));
-		vgl->VertexAttribPointer(vgl->GetAttribLocation(vgl->program[program], attribute), 2, GL_FLOAT, 0, 0, 0);
-	}
-	free(textureCoord);
-	glActiveTexture(GL_TEXTURE0 + 0);
-	glClientActiveTexture(GL_TEXTURE0 + 0);
-	
-	vgl->BindBuffer(GL_ARRAY_BUFFER, vgl->vertex_buffer_object);
-	vgl->BufferData(GL_ARRAY_BUFFER, nbVertices * 3 * sizeof(GLfloat), vertexCoord, GL_STATIC_DRAW);
-	free(vertexCoord);
-	vgl->BindBuffer(GL_ELEMENT_ARRAY_BUFFER, vgl->index_buffer_object);
-	vgl->BufferData(GL_ELEMENT_ARRAY_BUFFER, nbIndices * sizeof(GLushort), indices, GL_STATIC_DRAW);
-	free(indices);
-	vgl->EnableVertexAttribArray(vgl->GetAttribLocation(vgl->program[program], "VertexPosition"));
-	vgl->VertexAttribPointer(vgl->GetAttribLocation(vgl->program[program], "VertexPosition"), 3, GL_FLOAT, 0, 0, 0);
-	
-	vgl->UniformMatrix4fv(vgl->GetUniformLocation(vgl->program[program], "OrientationMatrix"), 1, GL_FALSE, orientationMatrix);
-	
-	vgl->BindBuffer(GL_ELEMENT_ARRAY_BUFFER, vgl->index_buffer_object);
-	glDrawElements(GL_TRIANGLES, nbIndices, GL_UNSIGNED_SHORT, 0);
-}
-#endif
-
 int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 						const video_format_t *source)
 {
@@ -375,18 +187,6 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 
 		[mSyphon publishRenderBlock:^{
 			
-			glDisable(GL_BLEND);
-			glDisable(GL_DEPTH_TEST);
-			glDepthMask(GL_FALSE);
-			glEnable(GL_CULL_FACE);
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
-			glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-
-//			glEnable(GL_BLEND);
-//			glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
-//			glBlendFunc(GL_ONE, GL_ZERO);
-
 			glClearColor( 1,0,0,1 );
 			glClear( GL_COLOR_BUFFER_BIT );
 
@@ -437,15 +237,18 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 			}
 			
 #ifdef SUPPORTS_SHADERS
-			if (vgl->program[0] && (vgl->chroma->plane_count == 3 || vgl->chroma->plane_count == 1))
-				syphon_DrawWithShaders(vgl, left, top, right, bottom, 0);
-			else if (vgl->program[1] && vgl->chroma->plane_count == 1)
-				syphon_DrawWithShaders(vgl, left, top, right, bottom, 1);
-			else
+			if (vgl->program[0] && (vgl->chroma->plane_count == 3 || vgl->chroma->plane_count == 1)){
+				NSLog(@"syphon_DrawWithShaders program 0 [%d] plane_count [%d]",vgl->program[0],vgl->chroma->plane_count);
+				DrawWithShaders(vgl, left, top, right, bottom, 0);
+			}else if (vgl->program[1] && vgl->chroma->plane_count == 1){
+				NSLog(@"syphon_DrawWithShaders program 1 [%d] plane_count [%d]",vgl->program[1],vgl->chroma->plane_count);
+				DrawWithShaders(vgl, left, top, right, bottom, 1);
+			}else
 #endif
 			{
 #ifdef SUPPORTS_FIXED_PIPELINE
-				syphon_DrawWithoutShaders(vgl, left, top, right, bottom);
+				NSLog(@"syphon_DrawWithoutShaders orientation [%d]",vgl->fmt.orientation);
+				DrawWithoutShaders(vgl, left, top, right, bottom);
 #endif
 			}
 			

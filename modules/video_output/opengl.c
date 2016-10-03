@@ -304,8 +304,8 @@ static void BuildYUVFragmentShader(vout_display_opengl_t *vgl,
         " result = x * Coefficient[0] + Coefficient[3];"
         " result = (y * Coefficient[1]) + result;"
         " result = (z * Coefficient[2]) + result;"
-		" result.a = 1.;"	// ROGER -- SYPHON
         " gl_FragColor = result;"
+        " gl_FragColor.a = 1.;"	// ROGER -- SYPHON
         "}";
     bool swap_uv = fmt->i_chroma == VLC_CODEC_YV12 ||
                    fmt->i_chroma == VLC_CODEC_YV9;
@@ -1003,12 +1003,16 @@ int vout_display_opengl_Prepare(vout_display_opengl_t *vgl,
     return VLC_SUCCESS;
 }
 
+#endif	// SYPHON_SERVER
+
 static const GLfloat identity[] = {
     1.0f, 0.0f, 0.0f, 0.0f,
     0.0f, 1.0f, 0.0f, 0.0f,
     0.0f, 0.0f, 1.0f, 0.0f,
     0.0f, 0.0f, 0.0f, 1.0f
 };
+
+#ifndef SYPHON_SERVER
 
 void orientationTransformMatrix(GLfloat matrix[static 16], video_orientation_t orientation) {
 
@@ -1073,6 +1077,8 @@ void orientationTransformMatrix(GLfloat matrix[static 16], video_orientation_t o
     }
 }
 
+#endif	// SYPHON_SERVER
+	
 #ifdef SUPPORTS_FIXED_PIPELINE
 static void DrawWithoutShaders(vout_display_opengl_t *vgl,
                                float *left, float *top, float *right, float *bottom)
@@ -1253,6 +1259,8 @@ static void DrawWithShaders(vout_display_opengl_t *vgl,
     glDrawElements(GL_TRIANGLES, nbIndices, GL_UNSIGNED_SHORT, 0);
 }
 #endif
+
+#ifndef SYPHON_SERVER
 
 int vout_display_opengl_Display(vout_display_opengl_t *vgl,
                                 const video_format_t *source)
