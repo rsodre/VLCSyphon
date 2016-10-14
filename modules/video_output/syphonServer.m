@@ -158,7 +158,7 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 		if (vlc_gl_Lock(vgl->gl))
 			return VLC_EGENERIC;
 		
-		SyphonLog(@"Publishing block...");
+//		SyphonLog(@"Publishing block...");
 		
 		if (mSyphon == nil || !mOpen)
 			return VLC_EGENERIC;
@@ -219,16 +219,16 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 			
 #ifdef SUPPORTS_SHADERS
 			if (vgl->program[0] && (vgl->chroma->plane_count == 3 || vgl->chroma->plane_count == 1)){
-				NSLog(@"syphon_DrawWithShaders program 0 [%d] plane_count [%d]",vgl->program[0],vgl->chroma->plane_count);
+//				SyphonLog(@"syphon_DrawWithShaders program 0 [%d] plane_count [%d]",vgl->program[0],vgl->chroma->plane_count);
 				DrawWithShaders(vgl, left, top, right, bottom, 0);
 			}else if (vgl->program[1] && vgl->chroma->plane_count == 1){
-				NSLog(@"syphon_DrawWithShaders program 1 [%d] plane_count [%d]",vgl->program[1],vgl->chroma->plane_count);
+//				SyphonLog(@"syphon_DrawWithShaders program 1 [%d] plane_count [%d]",vgl->program[1],vgl->chroma->plane_count);
 				DrawWithShaders(vgl, left, top, right, bottom, 1);
 			}else
 #endif
 			{
 #ifdef SUPPORTS_FIXED_PIPELINE
-				NSLog(@"syphon_DrawWithoutShaders orientation [%d]",vgl->fmt.orientation);
+//				SyphonLog(@"syphon_DrawWithoutShaders orientation [%d]",vgl->fmt.orientation);
 				DrawWithoutShaders(vgl, left, top, right, bottom);
 #endif
 			}
@@ -342,7 +342,7 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 		vlc_gl_Unlock(vgl->gl);
 		
 		
-		SyphonLog(@"Published!");
+//		SyphonLog(@"Published!");
 	}
 	
 	return error;

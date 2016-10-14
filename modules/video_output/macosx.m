@@ -283,7 +283,7 @@ static int Open (vlc_object_t *this)
         vout_display_SendEventDisplaySize (vd, vd->fmt.i_visible_width, vd->fmt.i_visible_height);
 		
 		// ROGER -- SYPHON
-		syphon_log_to_file();
+		//syphon_log_to_file();
 		syphon_open(nil);
 		SyphonLog(@"Open!");
 		
