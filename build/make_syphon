@@ -4,7 +4,8 @@ rm -rf VLC.app
 make || exit 1
 echo "Packing VLCSyphon.app"
 install_name_tool -change @loader_path/../Frameworks/Syphon.framework/Versions/A/Syphon @executable_path/../Frameworks/Syphon.framework/Versions/A/Syphon ../build/VLC.app/Contents/MacOS/plugins/libvout_macosx_plugin.dylib
-cp -R ../modules/video_output/Syphon.framework ../build/VLC.app/Contents/Frameworks/
-ls -l ../build/VLC.app/Contents/Frameworks/
+rsync -ta ../modules/video_output/Syphon.framework ../build/VLC.app/Contents/Frameworks/
+#ls -l ../build/VLCsyphon.app/Contents/Frameworks/
 touch ../build/VLC.app
+rm -rf ../build/VLCSyphon.app
 mv ../build/VLC.app ../build/VLCSyphon.app
