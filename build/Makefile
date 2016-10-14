@@ -2989,7 +2989,14 @@ VLC-tmp:
 	cd "$(srcdir)"; cp AUTHORS COPYING THANKS $(abs_top_builddir)/tmp/
 	mkdir -p $(top_builddir)/tmp/modules/audio_output
 	mkdir -p $(top_builddir)/tmp/modules/gui/macosx
-	cd "$(srcdir)/modules/gui/macosx/" && cp *.h *.m $(abs_top_builddir)/tmp/modules/gui/macosx/
+	mkdir -p $(top_builddir)/tmp/modules/video_filter
+	mkdir -p $(top_builddir)/tmp/modules/video_output
+	mkdir -p $(top_builddir)/tmp/modules/notify
+	cp "$(srcdir)/modules/video_filter/Makefile.am" $(abs_top_builddir)/tmp/modules/video_filter/
+	cp "$(srcdir)/modules/video_output/Makefile.am" $(abs_top_builddir)/tmp/modules/video_output/
+	cp "$(srcdir)/modules/notify/Makefile.am" $(abs_top_builddir)/tmp/modules/notify/
+	cp "$(srcdir)/Makefile.in" $(abs_top_builddir)/tmp/
+	cp "$(srcdir)/configure.ac" $(abs_top_builddir)/tmp/
 	cd $(top_builddir)/tmp/extras/package/macosx && \
 		xcodebuild -target vlc-bundle-helper SYMROOT=../../../build DSTROOT=../../../build $(silentstd)
 	cp -R $(top_builddir)/tmp/build/Default/VLC.bundle $@
