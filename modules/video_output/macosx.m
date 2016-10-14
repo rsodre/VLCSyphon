@@ -284,6 +284,7 @@ static int Open (vlc_object_t *this)
 		
 		// ROGER -- SYPHON
 		syphon_log_to_file();
+		syphon_open(nil);
 		SyphonLog(@"Open!");
 		
         return VLC_SUCCESS;
@@ -333,7 +334,7 @@ void Close (vlc_object_t *this)
         free (sys);
 		
 		// ROGER -- SYPHON
-		syphon_close();
+		syphon_close(false);
 		SyphonLog(@"Closed!");
     }
 }
@@ -368,7 +369,6 @@ static void PictureDisplay (vout_display_t *vd, picture_t *pic, subpicture_t *su
 	[sys->glView setVoutFlushing:NO];
 
 	// ROGER -- SYPHON
-	//vlc_syphon_publish (sys->vgl, &vd->source);
 	syphon_display_opengl_Display(sys->vgl, &vd->source);
 	
 	picture_Release (pic);

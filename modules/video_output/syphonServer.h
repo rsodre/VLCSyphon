@@ -1,9 +1,9 @@
 /*
  syphonServer.h
  
- Created by rsodre on 05/aug/2016
+ Created by Roger Sodre on 05/aug/2016
  
- Copyright 2011 rsodre, bangnoise (Tom Butterworth) & vade (Anton Marini).
+ Syphon Copyright 2011 bangnoise (Tom Butterworth) & vade (Anton Marini).
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -30,20 +30,10 @@
 
 #pragma once
 
-#ifdef __OBJC__
-void syphon_open( CGLContextObj context );
-#endif
-void syphon_close();
-bool syphon_enabled();
-void syphon_publish( GLuint target, GLuint texID, int width, int height, bool flipped );
-void syphon_publish_area( GLuint target, GLuint texID, int width, int height, int x, int y, int w, int h, bool flipped );
-
-void vlc_syphon_open(vout_display_sys_t *sys);
-void vlc_syphon_publish(vout_display_opengl_t *vgl, const video_format_t *source);
-
+// Logging
 void syphon_log_to_file();
 void SyphonLog(NSString *format, ...);
 
-
-// NEW
+void syphon_open(CGLContextObj context);
 int syphon_display_opengl_Display(vout_display_opengl_t *vgl, const video_format_t *source);
+void syphon_close(bool destroy);

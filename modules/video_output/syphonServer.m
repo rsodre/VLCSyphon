@@ -1,9 +1,9 @@
 /*
  syphonServer.m
  
- Created by rsodre on 05/aug/2016
+ Created by Roger Sodre on 05/aug/2016
  
- Copyright 2011 rsodre, bangnoise (Tom Butterworth) & vade (Anton Marini).
+ Syphon Copyright 2011 bangnoise (Tom Butterworth) & vade (Anton Marini).
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -82,46 +82,38 @@ void SyphonLog(NSString *format, ...)
 // Syphon
 //
 // Singleton
-SyphonServer * mSyphon = NULL;
+SyphonServer * mSyphon = nil;
+bool mOpen = false;
 
-void syphon_open( CGLContextObj context )
-{
-	@autoreleasepool
-	{
-//		NSString *title = [NSString stringWithCString:name
-//											 encoding:[NSString defaultCStringEncoding]];
-		if (mSyphon == NULL)
-		{
-			if (context == nil)
-				context = CGLGetCurrentContext();
-			
-			SyphonLog(@">>> START SERVER ctx [%ld] current [%ld]",(long)context,(long)CGLGetCurrentContext());
-			mSyphon = [[SyphonServer alloc] initWithName:SERVER_NAME context:context options:nil];
-		}
-//		else
-//		{
-//			[mSyphon setName:SERVER_NAME];
-//		}
-	}
-}
-
-void syphon_close()
+void syphon_close(bool destroy)
 {
 	@autoreleasepool {
-		if (mSyphon != NULL)
+		if (mSyphon != nil && destroy)
 		{
 			[mSyphon stop];
 			[mSyphon release];
 			mSyphon = nil;
 		}
+		mOpen = false;
 	}
 }
 
-bool syphon_enabled()
+void syphon_open( CGLContextObj context )
 {
-	return ( mSyphon != NULL );
+	@autoreleasepool
+	{
+		syphon_close(true);
+		
+		if (context == nil)
+			context = CGLGetCurrentContext();
+		
+		SyphonLog(@">>> START SERVER ctx [%ld] current [%ld]",(long)context,(long)CGLGetCurrentContext());
+		mSyphon = [[SyphonServer alloc] initWithName:SERVER_NAME context:context options:nil];
+		mOpen = (mSyphon != nil);
+	}
 }
 
+/*
 void syphon_publish( GLuint target, GLuint texID, int width, int height, bool flipped )
 {
 	syphon_publish_area( target, texID, width, height, 0, 0, width, height, flipped );
@@ -131,30 +123,22 @@ void syphon_publish_area( GLuint target, GLuint texID, int width, int height, in
 {
 	@autoreleasepool
 	{
-		if (texID == 0 || width == 0 || height == 0 || w == 0 || h == 0)
+		if (mSyphon == nil || texID == 0 || width == 0 || height == 0 || w == 0 || h == 0)
 			return;
 		
-		if (mSyphon == NULL)
-		{
-			syphon_open(nil);
-		}
-		
-		if(mSyphon != NULL)
-		{
-			[mSyphon publishFrameTexture:texID
-						   textureTarget:target
-							 imageRegion:NSMakeRect(x, y, w, h)
-					   textureDimensions:NSMakeSize(width, height)
-								 flipped:flipped];
-//			[mSyphon publishRenderBlock:^{
-//				glClearColor( 1,0,0,1 );
-//				glClear( GL_COLOR_BUFFER_BIT );
-//			}
-//								   size:NSMakeSize(width, height) ];
-		}
+		[mSyphon publishFrameTexture:texID
+					   textureTarget:target
+						 imageRegion:NSMakeRect(x, y, w, h)
+				   textureDimensions:NSMakeSize(width, height)
+							 flipped:flipped];
+//		[mSyphon publishRenderBlock:^{
+//			glClearColor( 1,0,0,1 );
+//			glClear( GL_COLOR_BUFFER_BIT );
+//		}
+//							   size:NSMakeSize(width, height) ];
 	}
 }
-
+*/
 
 
 
@@ -176,10 +160,7 @@ int syphon_display_opengl_Display(vout_display_opengl_t *vgl,
 		
 		SyphonLog(@"Publishing block...");
 		
-		if (mSyphon == NULL)
-			syphon_open(nil);
-		
-		if (mSyphon == NULL)
+		if (mSyphon == nil || !mOpen)
 			return VLC_EGENERIC;
 		
 		int width = source->i_width;
