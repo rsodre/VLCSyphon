@@ -1,0 +1,2 @@
+#! /bin/sh
+exec /Users/Roger/Dev/XCode/vlc/build/vlc_install_dir/bin/vlc -I "rc" "$@"

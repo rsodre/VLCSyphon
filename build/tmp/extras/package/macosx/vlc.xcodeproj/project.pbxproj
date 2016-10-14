@@ -865,6 +865,12 @@
 		CCDB535D13E97D3500A1782F /* dropzone-background.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB535C13E97D3500A1782F /* dropzone-background.png */; };
 		CCE8BAC4160615D9006741FB /* effects-one-button-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8BAC2160615D9006741FB /* effects-one-button-pressed.png */; };
 		CCE8BAC5160615D9006741FB /* effects-one-button-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCE8BAC3160615D9006741FB /* effects-one-button-pressed@2x.png */; };
+		DB0D2C871D5507C000D2FDBC /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0D2C861D5507C000D2FDBC /* Syphon.framework */; };
+		DB5FFC921D55180F00746F38 /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = DB5FFC911D55180F00746F38 /* Makefile.am */; };
+		DB5FFC941D551BC200746F38 /* configure.ac in Resources */ = {isa = PBXBuildFile; fileRef = DB5FFC931D551BC200746F38 /* configure.ac */; };
+		DB8B19F41D561C7E00F220E1 /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = DB8B19F11D561C7E00F220E1 /* Makefile.am */; };
+		DB8B19FA1D561F2400F220E1 /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = DB8B19F91D561F2400F220E1 /* Makefile.am */; };
+		DB8B1A061D5628F400F220E1 /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = DB8B1A051D5628F400F220E1 /* Makefile.in */; };
 		DCC8017A16FCA0DA007FE736 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCC8017916FCA0DA007FE736 /* AVFoundation.framework */; };
 		E0FB95CE1615B6DF0005069A /* DetachedVideoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0FB95CC1615B6DF0005069A /* DetachedVideoWindow.xib */; };
 /* End PBXBuildFile section */
@@ -1776,6 +1782,25 @@
 		CCF0777A13659A8000AF19FD /* SPInvocationGrabbing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPInvocationGrabbing.m; path = ../../../modules/gui/macosx/SPInvocationGrabbing.m; sourceTree = SOURCE_ROOT; };
 		CCF0777B13659A8000AF19FD /* SPMediaKeyTap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPMediaKeyTap.h; path = ../../../modules/gui/macosx/SPMediaKeyTap.h; sourceTree = SOURCE_ROOT; };
 		CCF0777C13659A8000AF19FD /* SPMediaKeyTap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPMediaKeyTap.m; path = ../../../modules/gui/macosx/SPMediaKeyTap.m; sourceTree = SOURCE_ROOT; };
+		DB0D2C861D5507C000D2FDBC /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = "/Users/Roger/Dev/XCode/vlc/contrib/x86_64-apple-darwin11/contrib-osx/Syphon.framework"; sourceTree = "<group>"; };
+		DB0D2C8C1D55138800D2FDBC /* syphonServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = syphonServer.h; path = ../../../modules/video_output/syphonServer.h; sourceTree = "<group>"; };
+		DB0D2C8D1D55138800D2FDBC /* syphonServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = syphonServer.m; path = ../../../modules/video_output/syphonServer.m; sourceTree = "<group>"; };
+		DB5FFC911D55180F00746F38 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../../../modules/video_output/Makefile.am; sourceTree = "<group>"; };
+		DB5FFC931D551BC200746F38 /* configure.ac */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = configure.ac; path = ../../../configure.ac; sourceTree = "<group>"; };
+		DB8B19F11D561C7E00F220E1 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../../../modules/notify/Makefile.am; sourceTree = "<group>"; };
+		DB8B19F21D561C7E00F220E1 /* notify.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = notify.c; path = ../../../modules/notify/notify.c; sourceTree = "<group>"; };
+		DB8B19F31D561C7E00F220E1 /* osx_notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = osx_notifications.m; path = ../../../modules/notify/osx_notifications.m; sourceTree = "<group>"; };
+		DB8B19F71D561F2400F220E1 /* anaglyph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = anaglyph.c; path = ../../../modules/video_filter/anaglyph.c; sourceTree = "<group>"; };
+		DB8B19F81D561F2400F220E1 /* logo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = logo.c; path = ../../../modules/video_filter/logo.c; sourceTree = "<group>"; };
+		DB8B19F91D561F2400F220E1 /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = ../../../modules/video_filter/Makefile.am; sourceTree = "<group>"; };
+		DB8B19FC1D5622B800F220E1 /* vlc_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_common.h; path = ../../../include/vlc_common.h; sourceTree = "<group>"; };
+		DB8B19FD1D5622B800F220E1 /* vlc_filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_filter.h; path = ../../../include/vlc_filter.h; sourceTree = "<group>"; };
+		DB8B19FE1D5622B800F220E1 /* vlc_picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_picture.h; path = ../../../include/vlc_picture.h; sourceTree = "<group>"; };
+		DB8B19FF1D5622B800F220E1 /* vlc_vout_display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_vout_display.h; path = ../../../include/vlc_vout_display.h; sourceTree = "<group>"; };
+		DB8B1A001D5622B800F220E1 /* vlc_vout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_vout.h; path = ../../../include/vlc_vout.h; sourceTree = "<group>"; };
+		DB8B1A011D5623F200F220E1 /* vlc_es.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_es.h; path = ../../../include/vlc_es.h; sourceTree = "<group>"; };
+		DB8B1A021D5623F200F220E1 /* vlc_subpicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vlc_subpicture.h; path = ../../../include/vlc_subpicture.h; sourceTree = "<group>"; };
+		DB8B1A051D5628F400F220E1 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.in; path = ../../../Makefile.in; sourceTree = "<group>"; };
 		DC1A176914E2778A001477C6 /* qtsound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = qtsound.m; path = ../../../modules/access/qtsound.m; sourceTree = "<group>"; };
 		DCC8017816FCA036007FE736 /* avcapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = avcapture.m; path = ../../../modules/access/avcapture.m; sourceTree = "<group>"; };
 		DCC8017916FCA0DA007FE736 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1806,6 +1831,7 @@
 				DCC8017A16FCA0DA007FE736 /* AVFoundation.framework in Frameworks */,
 				CC402F410E00ABBB006A4BA4 /* Cocoa.framework in Frameworks */,
 				CC402F420E00ABBB006A4BA4 /* ApplicationServices.framework in Frameworks */,
+				DB0D2C871D5507C000D2FDBC /* Syphon.framework in Frameworks */,
 				CC402F430E00ABBB006A4BA4 /* QTKit.framework in Frameworks */,
 				CC402F440E00ABBB006A4BA4 /* WebKit.framework in Frameworks */,
 				CCBE999F0F922C51000705F8 /* CoreServices.framework in Frameworks */,
@@ -1965,6 +1991,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB0D2C861D5507C000D2FDBC /* Syphon.framework */,
 				CC3F9F851350B2A000B0E885 /* Growl.framework */,
 				CC84FB2C130083BB00816D38 /* BGHUDAppKit.framework */,
 				CC426FD01020D44F00A32659 /* Sparkle.framework */,
@@ -2816,6 +2843,10 @@
 		CC6C01A40DDF3E7800C7D754 /* Minimal Mac OS X Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DB8B19FB1D56227900F220E1 /* include */,
+				DB8B19F61D561EEF00F220E1 /* effects */,
+				DB8B19F01D561C6200F220E1 /* notifications */,
+				DB0D2C881D55137200D2FDBC /* syphon */,
 				CC6C01A90DDF3E9200C7D754 /* intf.h */,
 				CC6C01AA0DDF3E9200C7D754 /* intf.m */,
 				CC6C01AB0DDF3E9200C7D754 /* macosx.c */,
@@ -2970,6 +3001,52 @@
 				CC9E5D6F15975E2600D14E83 /* sidebar-podcast@2x.png */,
 			);
 			name = "sidebar-icons";
+			sourceTree = "<group>";
+		};
+		DB0D2C881D55137200D2FDBC /* syphon */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B1A051D5628F400F220E1 /* Makefile.in */,
+				DB5FFC931D551BC200746F38 /* configure.ac */,
+				DB5FFC911D55180F00746F38 /* Makefile.am */,
+				DB0D2C8C1D55138800D2FDBC /* syphonServer.h */,
+				DB0D2C8D1D55138800D2FDBC /* syphonServer.m */,
+			);
+			name = syphon;
+			sourceTree = "<group>";
+		};
+		DB8B19F01D561C6200F220E1 /* notifications */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B19F11D561C7E00F220E1 /* Makefile.am */,
+				DB8B19F21D561C7E00F220E1 /* notify.c */,
+				DB8B19F31D561C7E00F220E1 /* osx_notifications.m */,
+			);
+			name = notifications;
+			sourceTree = "<group>";
+		};
+		DB8B19F61D561EEF00F220E1 /* effects */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B19F71D561F2400F220E1 /* anaglyph.c */,
+				DB8B19F81D561F2400F220E1 /* logo.c */,
+				DB8B19F91D561F2400F220E1 /* Makefile.am */,
+			);
+			name = effects;
+			sourceTree = "<group>";
+		};
+		DB8B19FB1D56227900F220E1 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				DB8B1A011D5623F200F220E1 /* vlc_es.h */,
+				DB8B1A021D5623F200F220E1 /* vlc_subpicture.h */,
+				DB8B19FC1D5622B800F220E1 /* vlc_common.h */,
+				DB8B19FD1D5622B800F220E1 /* vlc_filter.h */,
+				DB8B19FE1D5622B800F220E1 /* vlc_picture.h */,
+				DB8B19FF1D5622B800F220E1 /* vlc_vout_display.h */,
+				DB8B1A001D5622B800F220E1 /* vlc_vout.h */,
+			);
+			name = include;
 			sourceTree = "<group>";
 		};
 		DCF358BC077F1236007DB450 /* xibs */ = {
@@ -3239,6 +3316,7 @@
 				1C88BB5919DC7C7800645190 /* ys-repeat-one@2x.png in Resources */,
 				CC04326413B246DF00D7D52E /* volume-slider-track_dark.png in Resources */,
 				CC04331013B28B2900D7D52E /* fs_background.png in Resources */,
+				DB8B19FA1D561F2400F220E1 /* Makefile.am in Resources */,
 				CC04331113B28B2900D7D52E /* fs_exit_fullscreen_highlight.png in Resources */,
 				1C88BA5B19DC7B2200645190 /* yosemite-window-close-over-graphite@2x.png in Resources */,
 				CC04331213B28B2900D7D52E /* fs_exit_fullscreen.png in Resources */,
@@ -3265,6 +3343,7 @@
 				CC04332013B28B2900D7D52E /* fs_stop.png in Resources */,
 				CC04332113B28B2900D7D52E /* fs_time_slider_knob_highlight.png in Resources */,
 				CC04332213B28B2900D7D52E /* fs_time_slider_knob.png in Resources */,
+				DB5FFC921D55180F00746F38 /* Makefile.am in Resources */,
 				1C88BC0919DC7C8100645190 /* ys-fullscreen-one-button_dark.png in Resources */,
 				CC04332313B28B2900D7D52E /* fs_time_slider.png in Resources */,
 				1C51BDE51B7A221B0056B9AA /* TimeSelectionPanel.xib in Resources */,
@@ -3541,6 +3620,7 @@
 				1C88BB2C19DC7C7800645190 /* ys-next-6btns-pressed.png in Resources */,
 				1C88BC4519DC7C8100645190 /* ys-stop-pressed_dark.png in Resources */,
 				CC0F725215063C820086B6A0 /* fullscreen-one-button-pressed.png in Resources */,
+				DB8B19F41D561C7E00F220E1 /* Makefile.am in Resources */,
 				1C88BA5919DC7B2200645190 /* yosemite-window-close-on@2x.png in Resources */,
 				CC0F725315063C820086B6A0 /* fullscreen-one-button.png in Resources */,
 				CC0F725715063C980086B6A0 /* fullscreen-one-button_dark.png in Resources */,
@@ -3623,6 +3703,7 @@
 				1C88BC4419DC7C8100645190 /* ys-shuffle_dark@2x.png in Resources */,
 				CC9E5DE3159760B100D14E83 /* bottom-background@2x.png in Resources */,
 				1C88BB7019DC7C7800645190 /* ys-volume-slider-track.png in Resources */,
+				DB8B1A061D5628F400F220E1 /* Makefile.in in Resources */,
 				1C88BA6319DC7B2200645190 /* yosemite-window-fullscreen-on-graphite@2x.png in Resources */,
 				CC9E5DE5159760B100D14E83 /* effects-double-buttons-pressed@2x.png in Resources */,
 				1C88BC1119DC7C8100645190 /* ys-pause_dark.png in Resources */,
@@ -3641,6 +3722,7 @@
 				CC9E5DEF159760B100D14E83 /* pause-pressed@2x.png in Resources */,
 				1C88BC0319DC7C8100645190 /* ys-fullscreen-double-buttons-pressed_dark.png in Resources */,
 				CC9E5DF0159760B100D14E83 /* pause@2x.png in Resources */,
+				DB5FFC941D551BC200746F38 /* configure.ac in Resources */,
 				CC9E5DF1159760B100D14E83 /* play-pressed@2x.png in Resources */,
 				1C88BCBC19DC7CB300645190 /* ys-fs_volume_mute_highlight.png in Resources */,
 				CC9E5DF2159760B100D14E83 /* play@2x.png in Resources */,
@@ -4923,6 +5005,10 @@
 		C2F2A6EB09588F1B00018C74 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";
@@ -4934,6 +5020,10 @@
 		C2F2A6EC09588F1B00018C74 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";
@@ -4945,6 +5035,10 @@
 		C2F2A6ED09588F1B00018C74 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"${VLC_SRC_DIR}/include",
+					"${VLC_SRC_DIR}/build/include",
+				);
 				PATH = $VLC_PATH;
 				PRODUCT_NAME = VLC;
 				VLC_BUILD_TRIPLET = "x86_64-apple-darwin11";
