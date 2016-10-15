@@ -1,3 +1,5 @@
+![VLCSyphon](https://raw.githubusercontent.com/rsodre/VLCSyphon/Syphon/VLCSyphon.png)
+
 # VLCSyphon
 
 **VLCSyphon** is a build of the [VLC Media Player](http://www.videolan.org/vlc/index.html) with a [Syphon](http://syphon.v002.info/) server inside. It allows us to play movies and use it as a teture on any Syphon-enabled application.
