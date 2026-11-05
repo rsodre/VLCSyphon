@@ -1,3 +1,15 @@
+> [!IMPORTANT]
+> **This project is discontinued. Use [vlc-syphon-ndi](https://github.com/rsodre/vlc-syphon-ndi) instead.**
+>
+> vlc-syphon-ndi brings **VLCSyphon.app** and **VLCNDI.app**, based on the current official VLC
+> (3.0.24), for macOS 11+ on Apple Silicon and Intel. They're signed and notarized, and Syphon
+> also works with hardware-decoded video. NDI® output with sound comes too, and the plugins can
+> also be added to the official VLC.
+> [Download the latest release](https://github.com/rsodre/vlc-syphon-ndi/releases/latest).
+>
+> This repository is a 2016 fork of VLC 3.0.0-git. It's kept for reference only and is no longer
+> maintained.
+
 ![VLCSyphon](https://raw.githubusercontent.com/rsodre/VLCSyphon/Syphon/VLCSyphon.png)
 
 # VLCSyphon
